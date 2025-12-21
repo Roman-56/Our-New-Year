@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy New Year ❤️</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Montserrat&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --peach: #FDE5D4;
+      --green: #445D48;
+      --olive: #D6CC99;
+      --navy: #001524;
+      --brown: #5E3023;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--navy);
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Moving background */
+    .background {
+      position: fixed;
+      inset: 0;
+      background: url("assets/bg1.jpg") center/cover no-repeat;
+      animation: moveBg 40s alternate infinite linear;
+      z-index: -3;
+    }
+
+    @keyframes moveBg {
+      from { transform: scale(1) translateX(0); }
+      to { transform: scale(1.1) translateX(-30px); }
+    }
+
+    /* Peach overlay */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(253,229,212,0.75);
+      z-index: -2;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 20px;
+      animation: floatUp 8s linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(0); opacity: 0.8; }
+      to { transform: translateY(-110vh); opacity: 0; }
+    }
+
+    .container {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      margin-bottom: 10px;
+    }
+
+    #counter {
+      font-size: 1.2rem;
+      margin: 20px 0;
+      color: var(--brown);
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 14px 28px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 30px;
+      background: var(--green);
+      color: var(--peach);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: var(--brown);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="background"></div>
+  <div class="overlay"></div>
+
+  <!-- Music -->
+  <audio id="bg-music" loop>
+    <source src="assets/music.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="container">
+    <h1>Happy New Year, my love 💖🎆</h1>
+    <div>We’ve been together for 💞</div>
+    <div id="counter"></div>
+
+    <button onclick="goNext()">Click here ❤️</button>
+  </div>
+
+  <script>
+    /* Countdown */
+    const startDate = new Date("2024-04-19T01:19:00");
+
+    function updateCounter() {
+      const now = new Date();
+      let diff = now - startDate;
+
+      const days = Math.floor(diff / (1000*60*60*24));
+      diff %= (1000*60*60*24);
+      const hours = Math.floor(diff / (1000*60*60));
+      diff %= (1000*60*60);
+      const minutes = Math.floor(diff / (1000*60));
+      const seconds = Math.floor(diff / 1000);
+
+      document.getElementById("counter").innerHTML =
+        `${days} days ${hours} hrs ${minutes} mins ${seconds} secs`;
+    }
+    setInterval(updateCounter, 1000);
+    updateCounter();
+
+    /* Music start */
+    document.body.addEventListener("click", () => {
+      document.getElementById("bg-music").play();
+    }, { once: true });
+
+    /* Floating hearts */
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.innerText = "💖";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 8000);
+    }, 900);
+
+    function goNext() {
+      window.location.href = "letter.html";
+    }
+  </script>
+</body>
+</html>
