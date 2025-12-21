@@ -9,33 +9,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Montserrat&display=swap" rel="stylesheet">
 
   <style>
-  .scrolling-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 200%; /* taller than screen for scrolling */
-  background: url("assets/bg1.png") repeat-y center top;
-  background-size: cover;
-  z-index: -1; /* behind content */
-  animation: scrollBG 30s linear infinite;
-  opacity: 0.5; /* soft peach overlay effect */
-}
-
-/* vertical scroll animation */
-@keyframes scrollBG {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-50%); } /* scrolls up */
-}
-
-/* Peach overlay on top of scrolling image */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: rgba(247, 207, 196, 0.4); /* peach opacity */
-  z-index: -1;
-}
     :root {
       --peach: #FDE5D4;
       --green: #445D48;
@@ -54,26 +27,31 @@ body::before {
       overflow: hidden;
     }
 
-    /* Moving background */
-    .background {
+    /* Vertically scrolling background */
+    .scrolling-bg {
       position: fixed;
-      inset: 0;
-      background: url("assets/bg1.png") center/cover no-repeat;
-      animation: moveBg 40s alternate infinite linear;
-      z-index: -3;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 200%; /* taller than viewport for smooth scroll */
+      background: url("assets/bg1.png") repeat-y center top;
+      background-size: auto;
+      animation: scrollBG 30s linear infinite;
+      z-index: -2; /* behind overlay and content */
     }
 
-    @keyframes moveBg {
-      from { transform: scale(1) translateX(0); }
-      to { transform: scale(1.1) translateX(-30px); }
+    @keyframes scrollBG {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-50%); } /* scrolls up smoothly */
     }
 
-    /* Peach overlay */
+    /* Soft peach overlay */
     .overlay {
       position: fixed;
       inset: 0;
-      background: rgba(253,229,212,0.75);
-      z-index: -2;
+      background: rgba(247, 207, 196, 0.4);
+      z-index: -1; /* above background, behind content */
+      pointer-events: none;
     }
 
     /* Floating hearts */
@@ -129,77 +107,43 @@ body::before {
       transform: translateY(-3px);
       box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     }
+
+    /* Password screen */
+    #password-screen {
+      position: fixed;
+      inset: 0;
+      background: rgba(247, 207, 196, 0.95);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 99999;
+      font-family: 'Poppins', sans-serif;
+    }
   </style>
 </head>
 <body>
+  <!-- Backgrounds -->
   <div class="scrolling-bg"></div>
-<div id="password-screen" style="
-  position: fixed;
-  inset: 0;
-  background: rgba(247, 207, 196, 0.95);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 99999;
-  font-family: 'Poppins', sans-serif;
-">
-  <h2 style="color:#0f5132;">
-    💚🖤 Just us 🖤💚
-  </h2>
-
-  <p style="margin-bottom:10px;">Enter the secret(Hint- Thats always been our password!)</p>
-
-  <input
-    type="password"
-    id="passwordInput"
-    placeholder="💚🖤"
-    style="
-      padding: 10px;
-      font-size: 16px;
-      margin: 10px;
-      border: 2px solid #0f5132;
-      border-radius: 8px;
-      outline: none;
-    "
-  />
-
-  <button
-    onclick="checkPassword()"
-    style="
-      padding: 10px 24px;
-      font-size: 16px;
-      cursor: pointer;
-      background: #0f5132;
-      color: white;
-      border: none;
-      border-radius: 20px;
-    "
-  >
-    Unlock 💚🖤
-  </button>
-
-  <p id="errorMsg" style="color:black; display:none; margin-top:10px;">
-    ❌ Wrong! Don't tell me you don't remember T_T
-  </p>
-</div>
-<script>
-  const allowedPasswords = [
-    "roshan@2006",
-    "manisha@2005"
-  ];
-
-  function checkPassword() {
-    const input = document.getElementById("passwordInput").value.trim();
-    if (allowedPasswords.includes(input)) {
-      document.getElementById("password-screen").style.display = "none";
-    } else {
-      document.getElementById("errorMsg").style.display = "block";
-    }
-  }
-</script>
-  <div class="background"></div>
   <div class="overlay"></div>
+
+  <!-- Password screen -->
+  <div id="password-screen">
+    <h2 style="color:#0f5132;">💚🖤 Just us 🖤💚</h2>
+    <p style="margin-bottom:10px;">Enter the secret(Hint- Thats always been our password!)</p>
+
+    <input type="password" id="passwordInput" placeholder="💚🖤"
+      style="padding:10px; font-size:16px; margin:10px; border:2px solid #0f5132; border-radius:8px; outline:none;" />
+
+    <button onclick="checkPassword()"
+      style="padding:10px 24px; font-size:16px; cursor:pointer; background:#0f5132; color:white; border:none; border-radius:20px;">
+      Unlock 💚🖤
+    </button>
+
+    <p id="errorMsg" style="color:black; display:none; margin-top:10px;">
+      ❌ Wrong! Don't tell me you don't remember T_T
+    </p>
+  </div>
 
   <!-- Music -->
   <audio id="bg-music" loop>
@@ -210,14 +154,23 @@ body::before {
     <h1>Happy New Year, my love 💚🎆</h1>
     <div>We’ve been together for 🖤💚</div>
     <div id="counter"></div>
-
     <button onclick="goNext()">Click here ❤️</button>
   </div>
 
   <script>
-    /* Countdown */
-    const startDate = new Date("2024-04-19T01:19:00");
+    // Password check
+    const allowedPasswords = ["roshan@2006", "manisha@2005"];
+    function checkPassword() {
+      const input = document.getElementById("passwordInput").value.trim();
+      if (allowedPasswords.includes(input)) {
+        document.getElementById("password-screen").style.display = "none";
+      } else {
+        document.getElementById("errorMsg").style.display = "block";
+      }
+    }
 
+    // Countdown
+    const startDate = new Date("2024-04-19T01:19:00");
     function updateCounter() {
       const now = new Date();
       let diff = now - startDate;
@@ -235,12 +188,12 @@ body::before {
     setInterval(updateCounter, 1000);
     updateCounter();
 
-    /* Music start */
+    // Music start
     document.body.addEventListener("click", () => {
       document.getElementById("bg-music").play();
     }, { once: true });
 
-    /* Floating hearts */
+    // Floating hearts
     setInterval(() => {
       const heart = document.createElement("div");
       heart.className = "heart";
