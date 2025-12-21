@@ -9,6 +9,23 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Montserrat&display=swap" rel="stylesheet">
 
   <style>
+    /* Background scrolling effect */
+#scrolling-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%; /* adjust for horizontal scroll width */
+  height: 100%;
+  background: url('assets/bg1.png') repeat-x; /* horizontal repeat */
+  background-size: cover;
+  z-index: -1; /* behind all content */
+  animation: scrollBackground 40s linear infinite; /* speed & looping */
+}
+
+@keyframes scrollBackground {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* scroll left */
+}
     :root {
       --peach: #FDE5D4;
       --green: #445D48;
@@ -155,7 +172,7 @@
     ❌ Wrong! Don't tell me you don't remember T_T
   </p>
 </div>
-
+<div id="scrolling-bg"></div>
 <script>
   const allowedPasswords = [
     "roshan@2006",
