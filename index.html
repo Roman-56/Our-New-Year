@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Happy New Year ❤️</title>
+  <title>Happy New Year My Babyyy❤️</title>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Montserrat&display=swap" rel="stylesheet">
@@ -108,28 +108,52 @@
 <div id="password-screen" style="
   position: fixed;
   inset: 0;
-  background: #f7cfc4;
+  background: rgba(247, 207, 196, 0.95);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
-  font-family: sans-serif;
+  z-index: 99999;
+  font-family: 'Poppins', sans-serif;
 ">
-  <h2>💖 This space is just for us 💖</h2>
+  <h2 style="color:#0f5132;">
+    💚🖤 Just us 🖤💚
+  </h2>
+
+  <p style="margin-bottom:10px;">Enter the secret(Hint- Thats always been our password!)</p>
+
   <input
     type="password"
     id="passwordInput"
-    placeholder="Enter the secret"
-    style="padding: 10px; font-size: 16px; margin: 10px;"
+    placeholder="💚🖤"
+    style="
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px;
+      border: 2px solid #0f5132;
+      border-radius: 8px;
+      outline: none;
+    "
   />
+
   <button
     onclick="checkPassword()"
-    style="padding: 10px 20px; font-size: 16px; cursor: pointer;"
+    style="
+      padding: 10px 24px;
+      font-size: 16px;
+      cursor: pointer;
+      background: #0f5132;
+      color: white;
+      border: none;
+      border-radius: 20px;
+    "
   >
-    Unlock 🔐
+    Unlock 💚🖤
   </button>
-  <p id="errorMsg" style="color:red; display:none;">Wrong password 💔</p>
+
+  <p id="errorMsg" style="color:black; display:none; margin-top:10px;">
+    ❌ Wrong! Don't tell me you don't remember T_T
+  </p>
 </div>
 
 <script>
@@ -139,7 +163,7 @@
   ];
 
   function checkPassword() {
-    const input = document.getElementById("passwordInput").value;
+    const input = document.getElementById("passwordInput").value.trim();
     if (allowedPasswords.includes(input)) {
       document.getElementById("password-screen").style.display = "none";
     } else {
@@ -147,7 +171,6 @@
     }
   }
 </script>
-
   <div class="background"></div>
   <div class="overlay"></div>
 
@@ -157,8 +180,8 @@
   </audio>
 
   <div class="container">
-    <h1>Happy New Year, my love 💖🎆</h1>
-    <div>We’ve been together for 💞</div>
+    <h1>Happy New Year, my love 💚🎆</h1>
+    <div>We’ve been together for 🖤💚</div>
     <div id="counter"></div>
 
     <button onclick="goNext()">Click here ❤️</button>
