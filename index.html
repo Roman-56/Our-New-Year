@@ -1,229 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Happy New Year My Babyyy ❤️</title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Montserrat&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Happy New Year My Love 💚🖤</title>
 
-  <style>
-    :root {
-      --peach: #FDE5D4;
-      --green: #445D48;
-      --navy: #001524;
-      --brown: #5E3023;
-    }
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Montserrat&display=swap" rel="stylesheet">
 
-    * {
-      box-sizing: border-box;
-    }
+<style>
+:root {
+  --peach: #FDE5D4;
+  --green: #0f5132;
+  --navy: #001524;
+  --brown: #5E3023;
+}
 
-    body {
-      margin: 0;
-      font-family: 'Montserrat', sans-serif;
-      color: var(--navy);
-      height: 100vh;
-      overflow: hidden;
-      background-color: var(--peach);
-    }
+* {
+  box-sizing: border-box;
+}
 
-    /* ================= BACKGROUND ================= */
+/* ================= BODY ================= */
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  color: var(--navy);
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: var(--peach);
+}
 
-    .scrolling-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 200%;
-      background-image: url("assets/bg1.png");
-      background-repeat: repeat-y;
-      background-position: center top;
-      background-size: cover; /* desktop */
-      animation: scrollBG 40s linear infinite;
-      z-index: -2;
-    }
+/* ================= BACKGROUND ================= */
+.scrolling-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200%;
+  background: url("assets/bg1.png") center top repeat-y;
+  background-size: cover;       /* desktop */
+  animation: scrollBG 40s linear infinite;
+  z-index: -2;
+}
 
-    @keyframes scrollBG {
-      from { transform: translateY(0); }
-      to   { transform: translateY(-50%); }
-    }
+@keyframes scrollBG {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-50%); }
+}
 
-    /* Peach overlay */
-    .overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(247, 207, 196, 0.4);
-      z-index: -1;
-      pointer-events: none;
-    }
+/* Peach overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(247, 207, 196, 0.4);
+  z-index: -1;
+  pointer-events: none;
+}
 
-    /* 📱 MOBILE — SHOW FULL IMAGE */
-    @media (max-width: 768px) {
-      .scrolling-bg {
-        background-size: contain; /* FULL IMAGE */
-        background-repeat: repeat-y;
-        animation-duration: 55s;
-      }
-    }
+/* 📱 MOBILE: SHOW FULL IMAGE */
+@media (max-width: 768px) {
+  .scrolling-bg {
+    background-size: contain;
+    animation-duration: 55s;
+  }
+}
 
-    /* ================= CONTENT ================= */
+/* ================= MAIN CONTENT ================= */
+.container {
+  min-height: 100vh;
+  width: 100%;
+  max-width: 900px;      /* prevents corner hugging */
+  margin: 0 auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
 
-    .container {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
-      z-index: 1;
-    }
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  margin: 10px 0;
+}
 
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.6rem;
-      margin-bottom: 10px;
-    }
+#counter {
+  margin: 18px 0;
+  font-size: 1.2rem;
+  color: var(--brown);
+}
 
-    #counter {
-      font-size: 1.2rem;
-      margin: 20px 0;
-      color: var(--brown);
-    }
+button {
+  padding: 14px 28px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 30px;
+  background: var(--green);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
 
-    button {
-      margin-top: 30px;
-      padding: 14px 28px;
-      font-size: 1rem;
-      border: none;
-      border-radius: 30px;
-      background: var(--green);
-      color: var(--peach);
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
+button:hover {
+  background: var(--brown);
+  transform: translateY(-2px);
+}
 
-    button:hover {
-      background: var(--brown);
-      transform: translateY(-3px);
-    }
+/* ================= HEARTS ================= */
+.heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 20px;
+  animation: floatUp 8s linear infinite;
+  opacity: 0.7;
+  z-index: 3;
+}
 
-    /* ================= HEARTS ================= */
+@keyframes floatUp {
+  from { transform: translateY(0); opacity: 0.8; }
+  to   { transform: translateY(-110vh); opacity: 0; }
+}
 
-    .heart {
-      position: fixed;
-      bottom: -20px;
-      font-size: 20px;
-      animation: floatUp 8s linear infinite;
-      opacity: 0.7;
-      z-index: 2;
-    }
+/* ================= PASSWORD SCREEN ================= */
+#password-screen {
+  position: fixed;
+  inset: 0;
+  background: rgba(247, 207, 196, 0.96);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 9999;
+  padding: 20px;
+}
 
-    @keyframes floatUp {
-      from { transform: translateY(0); opacity: 0.8; }
-      to { transform: translateY(-110vh); opacity: 0; }
-    }
-
-    /* ================= PASSWORD SCREEN ================= */
-
-    #password-screen {
-      position: fixed;
-      inset: 0;
-      background: rgba(247, 207, 196, 0.95);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
-  </style>
+#password-screen input {
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 2px solid var(--green);
+  margin: 12px 0;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- Background -->
-  <div class="scrolling-bg"></div>
-  <div class="overlay"></div>
+<!-- Background -->
+<div class="scrolling-bg"></div>
+<div class="overlay"></div>
 
-  <!-- Password Screen -->
-  <div id="password-screen">
-    <h2 style="color:#0f5132;">💚🖤 Just us 🖤💚</h2>
-    <p>Enter the secret (hint: always our password)</p>
+<!-- Password Screen -->
+<div id="password-screen">
+  <h2>💚🖤 Just us 🖤💚</h2>
+  <p>Enter the secret (hint: always our password)</p>
 
-    <input type="password" id="passwordInput" placeholder="💚🖤"
-      style="padding:10px; font-size:16px; margin:10px; border:2px solid #0f5132; border-radius:8px;" />
+  <input type="password" id="passwordInput" placeholder="💚🖤" />
+  <button onclick="checkPassword()">Unlock 💚🖤</button>
 
-    <button onclick="checkPassword()">Unlock 💚🖤</button>
+  <p id="errorMsg" style="display:none;">❌ Wrong password</p>
+</div>
 
-    <p id="errorMsg" style="display:none;">❌ Wrong password</p>
-  </div>
+<!-- Music -->
+<audio id="bg-music" loop>
+  <source src="assets/music.mp3" type="audio/mpeg">
+</audio>
 
-  <!-- Music -->
-  <audio id="bg-music" loop>
-    <source src="assets/music.mp3" type="audio/mpeg">
-  </audio>
+<!-- Content -->
+<div class="container">
+  <h1>Happy New Year, my love 💚🎆</h1>
+  <div>We’ve been together for 🖤💚</div>
+  <div id="counter"></div>
+  <button onclick="goNext()">Click here ❤️</button>
+</div>
 
-  <!-- Content -->
-  <div class="container">
-    <h1>Happy New Year, my love 💚🎆</h1>
-    <div>We’ve been together for 🖤💚</div>
-    <div id="counter"></div>
-    <button onclick="goNext()">Click here ❤️</button>
-  </div>
+<script>
+/* Password */
+const allowedPasswords = ["roshan@2006", "manisha@2005"];
 
-  <script>
-    /* Password */
-    const allowedPasswords = ["roshan@2006", "manisha@2005"];
+function checkPassword() {
+  const input = passwordInput.value.trim();
+  if (allowedPasswords.includes(input)) {
+    document.getElementById("password-screen").style.display = "none";
+  } else {
+    errorMsg.style.display = "block";
+  }
+}
 
-    function checkPassword() {
-      const val = passwordInput.value.trim();
-      if (allowedPasswords.includes(val)) {
-        document.getElementById("password-screen").style.display = "none";
-      } else {
-        errorMsg.style.display = "block";
-      }
-    }
+/* Counter */
+const startDate = new Date("2024-04-19T01:19:00");
 
-    /* Counter */
-    const startDate = new Date("2024-04-19T01:19:00");
+function updateCounter() {
+  const now = new Date();
+  let diff = now - startDate;
 
-    function updateCounter() {
-      const now = new Date();
-      let diff = now - startDate;
+  const d = Math.floor(diff / 86400000);
+  diff %= 86400000;
+  const h = Math.floor(diff / 3600000);
+  diff %= 3600000;
+  const m = Math.floor(diff / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
 
-      const d = Math.floor(diff / 86400000);
-      diff %= 86400000;
-      const h = Math.floor(diff / 3600000);
-      diff %= 3600000;
-      const m = Math.floor(diff / 60000);
-      const s = Math.floor((diff % 60000) / 1000);
+  counter.innerHTML = `${d} days ${h} hrs ${m} mins ${s} secs`;
+}
+setInterval(updateCounter, 1000);
+updateCounter();
 
-      counter.innerHTML = `${d} days ${h} hrs ${m} mins ${s} secs`;
-    }
+/* Music start */
+document.body.addEventListener("click", () => {
+  document.getElementById("bg-music").play();
+}, { once: true });
 
-    setInterval(updateCounter, 1000);
-    updateCounter();
+/* Floating hearts */
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.textContent = "💖";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 8000);
+}, 900);
 
-    /* Music */
-    document.body.addEventListener("click", () => {
-      document.getElementById("bg-music").play();
-    }, { once: true });
-
-    /* Hearts */
-    setInterval(() => {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.textContent = "💖";
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 8000);
-    }, 900);
-
-    function goNext() {
-      window.location.href = "letter.html";
-    }
-  </script>
+function goNext() {
+  window.location.href = "letter.html";
+}
+</script>
 
 </body>
 </html>
