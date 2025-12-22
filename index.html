@@ -1,49 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Happy New Year My Love 💚🖤</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy New Year ❤️</title>
 
-<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Montserrat&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --peach: #FDE5D4;
-  --green: #0f5132;
-  --navy: #001524;
-  --brown: #5E3023;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-/* ================= BODY ================= */
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
-  color: var(--navy);
   min-height: 100vh;
   overflow-x: hidden;
-  background-color: var(--peach);
+  background: #FDE5D4;
 }
 
-/* ================= BACKGROUND ================= */
-.scrolling-bg {
+/* ===== REAL IMAGE BACKGROUND ===== */
+.bg-wrapper {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 200%;
-  background: url("assets/bg1.png") center top repeat-y;
-  background-size: cover;       /* desktop */
-  animation: scrollBG 40s linear infinite;
+  inset: 0;
   z-index: -2;
+  overflow: hidden;
 }
 
-@keyframes scrollBG {
+.bg-wrapper img {
+  width: 100%;
+  height: auto;           /* 🔑 NO CROPPING */
+  min-height: 100vh;
+  animation: scrollImg 50s linear infinite;
+}
+
+@keyframes scrollImg {
   from { transform: translateY(0); }
   to   { transform: translateY(-50%); }
 }
@@ -54,180 +42,83 @@ body {
   inset: 0;
   background: rgba(247, 207, 196, 0.4);
   z-index: -1;
-  pointer-events: none;
 }
 
-/* 📱 MOBILE: SHOW FULL IMAGE */
-@media (max-width: 768px) {
-  .scrolling-bg {
-    background-size: contain;
-    animation-duration: 55s;
-  }
-}
-
-/* ================= MAIN CONTENT ================= */
+/* Content */
 .container {
   min-height: 100vh;
-  width: 100%;
-  max-width: 900px;      /* prevents corner hugging */
-  margin: 0 auto;
-  padding: 24px;
+  max-width: 900px;
+  margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  position: relative;
-  z-index: 2;
+  padding: 20px;
 }
 
 h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
-  margin: 10px 0;
 }
 
-#counter {
-  margin: 18px 0;
-  font-size: 1.2rem;
-  color: var(--brown);
-}
-
-button {
-  padding: 14px 28px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 30px;
-  background: var(--green);
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-button:hover {
-  background: var(--brown);
-  transform: translateY(-2px);
-}
-
-/* ================= HEARTS ================= */
+/* Hearts */
 .heart {
   position: fixed;
   bottom: -20px;
-  font-size: 20px;
   animation: floatUp 8s linear infinite;
-  opacity: 0.7;
-  z-index: 3;
 }
 
 @keyframes floatUp {
-  from { transform: translateY(0); opacity: 0.8; }
-  to   { transform: translateY(-110vh); opacity: 0; }
+  to { transform: translateY(-110vh); opacity: 0; }
 }
 
-/* ================= PASSWORD SCREEN ================= */
+/* Password */
 #password-screen {
   position: fixed;
   inset: 0;
-  background: rgba(247, 207, 196, 0.96);
+  background: rgba(247,207,196,0.95);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  z-index: 9999;
-  padding: 20px;
-}
-
-#password-screen input {
-  padding: 12px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: 2px solid var(--green);
-  margin: 12px 0;
+  z-index: 999;
 }
 </style>
 </head>
 
 <body>
 
-<!-- Background -->
-<div class="scrolling-bg"></div>
+<!-- REAL IMAGE BACKGROUND -->
+<div class="bg-wrapper">
+  <img src="assets/bg1.png" alt="background">
+</div>
 <div class="overlay"></div>
 
-<!-- Password Screen -->
+<!-- Password -->
 <div id="password-screen">
   <h2>💚🖤 Just us 🖤💚</h2>
-  <p>Enter the secret (hint: always our password)</p>
-
-  <input type="password" id="passwordInput" placeholder="💚🖤" />
-  <button onclick="checkPassword()">Unlock 💚🖤</button>
-
-  <p id="errorMsg" style="display:none;">❌ Wrong password</p>
+  <input type="password" id="passwordInput">
+  <button onclick="unlock()">Unlock</button>
 </div>
-
-<!-- Music -->
-<audio id="bg-music" loop>
-  <source src="assets/music.mp3" type="audio/mpeg">
-</audio>
 
 <!-- Content -->
 <div class="container">
-  <h1>Happy New Year, my love 💚🎆</h1>
-  <div>We’ve been together for 🖤💚</div>
+  <h1>Happy New Year, my love 💚</h1>
   <div id="counter"></div>
-  <button onclick="goNext()">Click here ❤️</button>
 </div>
 
 <script>
-/* Password */
-const allowedPasswords = ["roshan@2006", "manisha@2005"];
-
-function checkPassword() {
-  const input = passwordInput.value.trim();
-  if (allowedPasswords.includes(input)) {
+function unlock() {
+  if (passwordInput.value === "roshan@2006" || passwordInput.value === "manisha@2005") {
     document.getElementById("password-screen").style.display = "none";
-  } else {
-    errorMsg.style.display = "block";
   }
 }
 
-/* Counter */
 const startDate = new Date("2024-04-19T01:19:00");
-
-function updateCounter() {
-  const now = new Date();
-  let diff = now - startDate;
-
-  const d = Math.floor(diff / 86400000);
-  diff %= 86400000;
-  const h = Math.floor(diff / 3600000);
-  diff %= 3600000;
-  const m = Math.floor(diff / 60000);
-  const s = Math.floor((diff % 60000) / 1000);
-
-  counter.innerHTML = `${d} days ${h} hrs ${m} mins ${s} secs`;
-}
-setInterval(updateCounter, 1000);
-updateCounter();
-
-/* Music start */
-document.body.addEventListener("click", () => {
-  document.getElementById("bg-music").play();
-}, { once: true });
-
-/* Floating hearts */
 setInterval(() => {
-  const heart = document.createElement("div");
-  heart.className = "heart";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.textContent = "💖";
-  document.body.appendChild(heart);
-  setTimeout(() => heart.remove(), 8000);
-}, 900);
-
-function goNext() {
-  window.location.href = "letter.html";
-}
+  const diff = new Date() - startDate;
+  counter.textContent = Math.floor(diff / 86400000) + " days together";
+}, 1000);
 </script>
 
 </body>
