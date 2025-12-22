@@ -26,34 +26,40 @@
       height: 100vh;
       overflow: hidden;
     }
+@media (max-width: 768px) {
+  .scrolling-bg {
+    background-position: center;
+    background-size: cover;
+    animation-duration: 45s; /* slower for phones */
+  }
+}
 
-    /* Vertically scrolling background */
-    .scrolling-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 200%; /* taller than viewport for smooth scroll */
-      background: url("assets/bg1.png") repeat-y center top;
-      background-size: auto;
-      animation: scrollBG 30s linear infinite;
-      z-index: -2; /* behind overlay and content */
-    }
+  .scrolling-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200%;
+  background-image: url("assets/bg1.png");
+  background-repeat: repeat-y;
+  background-position: center top;
+  background-size: cover; /* fits both devices */
+  animation: scrollBG 35s linear infinite;
+  z-index: -2;
+}
 
-    @keyframes scrollBG {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-50%); } /* scrolls up smoothly */
-    }
-
-    /* Soft peach overlay */
-    .overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(247, 207, 196, 0.4);
-      z-index: -1; /* above background, behind content */
-      pointer-events: none;
-    }
-
+/* Smooth vertical scroll */
+@keyframes scrollBG {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-50%); }
+}
+  .overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(247, 207, 196, 0.4);
+  z-index: -1;
+  pointer-events: none;
+}
     /* Floating hearts */
     .heart {
       position: fixed;
