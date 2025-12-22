@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Happy New Year My Babyyy❤️</title>
+  <title>Happy New Year My Babyyy ❤️</title>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Montserrat&display=swap" rel="stylesheet">
@@ -12,12 +12,13 @@
     :root {
       --peach: #FDE5D4;
       --green: #445D48;
-      --olive: #D6CC99;
       --navy: #001524;
       --brown: #5E3023;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
@@ -25,53 +26,49 @@
       color: var(--navy);
       height: 100vh;
       overflow: hidden;
+      background-color: var(--peach);
     }
 
-  .scrolling-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 200%;
-  background-image: url("assets/bg1.png");
-  background-repeat: repeat-y;
-  background-position: center top;
-  background-size: cover; /* fits both devices */
-  animation: scrollBG 35s linear infinite;
-  z-index: -2;
-}
+    /* ================= BACKGROUND ================= */
 
-/* Smooth vertical scroll */
-@keyframes scrollBG {
-  from { transform: translateY(0); }
-  to   { transform: translateY(-50%); }
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(247, 207, 196, 0.4);
-  z-index: -1;
-  pointer-events: none;
-}
-    @media (max-width: 768px) {
-  .scrolling-bg {
-    background-size: contain;   /* SHOW FULL IMAGE */
-    background-repeat: repeat-y;
-    background-position: center top;
-  }
-}
-    /* Floating hearts */
-    .heart {
+    .scrolling-bg {
       position: fixed;
-      bottom: -20px;
-      font-size: 20px;
-      animation: floatUp 8s linear infinite;
-      opacity: 0.7;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 200%;
+      background-image: url("assets/bg1.png");
+      background-repeat: repeat-y;
+      background-position: center top;
+      background-size: cover; /* desktop */
+      animation: scrollBG 40s linear infinite;
+      z-index: -2;
     }
 
-    @keyframes floatUp {
-      from { transform: translateY(0); opacity: 0.8; }
-      to { transform: translateY(-110vh); opacity: 0; }
+    @keyframes scrollBG {
+      from { transform: translateY(0); }
+      to   { transform: translateY(-50%); }
     }
+
+    /* Peach overlay */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(247, 207, 196, 0.4);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* 📱 MOBILE — SHOW FULL IMAGE */
+    @media (max-width: 768px) {
+      .scrolling-bg {
+        background-size: contain; /* FULL IMAGE */
+        background-repeat: repeat-y;
+        animation-duration: 55s;
+      }
+    }
+
+    /* ================= CONTENT ================= */
 
     .container {
       height: 100%;
@@ -81,6 +78,7 @@
       align-items: center;
       text-align: center;
       padding: 20px;
+      z-index: 1;
     }
 
     h1 {
@@ -110,10 +108,26 @@
     button:hover {
       background: var(--brown);
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     }
 
-    /* Password screen */
+    /* ================= HEARTS ================= */
+
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 20px;
+      animation: floatUp 8s linear infinite;
+      opacity: 0.7;
+      z-index: 2;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(0); opacity: 0.8; }
+      to { transform: translateY(-110vh); opacity: 0; }
+    }
+
+    /* ================= PASSWORD SCREEN ================= */
+
     #password-screen {
       position: fixed;
       inset: 0;
@@ -122,32 +136,28 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      z-index: 99999;
-      font-family: 'Poppins', sans-serif;
+      z-index: 9999;
     }
   </style>
 </head>
+
 <body>
-  <!-- Backgrounds -->
+
+  <!-- Background -->
   <div class="scrolling-bg"></div>
   <div class="overlay"></div>
 
-  <!-- Password screen -->
+  <!-- Password Screen -->
   <div id="password-screen">
     <h2 style="color:#0f5132;">💚🖤 Just us 🖤💚</h2>
-    <p style="margin-bottom:10px;">Enter the secret(Hint- Thats always been our password!)</p>
+    <p>Enter the secret (hint: always our password)</p>
 
     <input type="password" id="passwordInput" placeholder="💚🖤"
-      style="padding:10px; font-size:16px; margin:10px; border:2px solid #0f5132; border-radius:8px; outline:none;" />
+      style="padding:10px; font-size:16px; margin:10px; border:2px solid #0f5132; border-radius:8px;" />
 
-    <button onclick="checkPassword()"
-      style="padding:10px 24px; font-size:16px; cursor:pointer; background:#0f5132; color:white; border:none; border-radius:20px;">
-      Unlock 💚🖤
-    </button>
+    <button onclick="checkPassword()">Unlock 💚🖤</button>
 
-    <p id="errorMsg" style="color:black; display:none; margin-top:10px;">
-      ❌ Wrong! Don't tell me you don't remember T_T
-    </p>
+    <p id="errorMsg" style="display:none;">❌ Wrong password</p>
   </div>
 
   <!-- Music -->
@@ -155,6 +165,7 @@
     <source src="assets/music.mp3" type="audio/mpeg">
   </audio>
 
+  <!-- Content -->
   <div class="container">
     <h1>Happy New Year, my love 💚🎆</h1>
     <div>We’ve been together for 🖤💚</div>
@@ -163,47 +174,49 @@
   </div>
 
   <script>
-    // Password check
+    /* Password */
     const allowedPasswords = ["roshan@2006", "manisha@2005"];
+
     function checkPassword() {
-      const input = document.getElementById("passwordInput").value.trim();
-      if (allowedPasswords.includes(input)) {
+      const val = passwordInput.value.trim();
+      if (allowedPasswords.includes(val)) {
         document.getElementById("password-screen").style.display = "none";
       } else {
-        document.getElementById("errorMsg").style.display = "block";
+        errorMsg.style.display = "block";
       }
     }
 
-    // Countdown
+    /* Counter */
     const startDate = new Date("2024-04-19T01:19:00");
+
     function updateCounter() {
       const now = new Date();
       let diff = now - startDate;
 
-      const days = Math.floor(diff / (1000*60*60*24));
-      diff %= (1000*60*60*24);
-      const hours = Math.floor(diff / (1000*60*60));
-      diff %= (1000*60*60);
-      const minutes = Math.floor(diff / (1000*60));
-      const seconds = Math.floor(diff / 1000);
+      const d = Math.floor(diff / 86400000);
+      diff %= 86400000;
+      const h = Math.floor(diff / 3600000);
+      diff %= 3600000;
+      const m = Math.floor(diff / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
 
-      document.getElementById("counter").innerHTML =
-        `${days} days ${hours} hrs ${minutes} mins ${seconds} secs`;
+      counter.innerHTML = `${d} days ${h} hrs ${m} mins ${s} secs`;
     }
+
     setInterval(updateCounter, 1000);
     updateCounter();
 
-    // Music start
+    /* Music */
     document.body.addEventListener("click", () => {
       document.getElementById("bg-music").play();
     }, { once: true });
 
-    // Floating hearts
+    /* Hearts */
     setInterval(() => {
       const heart = document.createElement("div");
       heart.className = "heart";
       heart.style.left = Math.random() * 100 + "vw";
-      heart.innerText = "💖";
+      heart.textContent = "💖";
       document.body.appendChild(heart);
       setTimeout(() => heart.remove(), 8000);
     }, 900);
@@ -212,5 +225,6 @@
       window.location.href = "letter.html";
     }
   </script>
+
 </body>
 </html>
