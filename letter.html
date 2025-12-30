@@ -1,28 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>For You baby💗</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For You baby 💗</title>
 
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Montserrat&display=swap" rel="stylesheet">
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
-      background: #FDE5D4;
       color: #001524;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    /* BACKGROUND IMAGE */
+    .bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 120%;
+      background-image: url("assets/bg.jpg"); /* 🔁 CHANGE IMAGE HERE */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      animation: moveBg 30s linear infinite;
+      z-index: -3;
+    }
+
+    @keyframes moveBg {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-10%); }
+    }
+
+    /* DARK OVERLAY */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.25);
+      z-index: -2;
+    }
+
+    /* HEARTS */
+    .hearts span {
+      position: fixed;
+      bottom: -50px;
+      font-size: 22px;
+      animation: floatUp 10s linear infinite;
+      opacity: 0.7;
+      z-index: -1;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0;
+      }
+      20% { opacity: 1; }
+      100% {
+        transform: translateY(-120vh) scale(1.4);
+        opacity: 0;
+      }
+    }
+
+    .hearts span:nth-child(1) { left: 10%; animation-delay: 0s; color: #0b5d1e; }
+    .hearts span:nth-child(2) { left: 25%; animation-delay: 2s; color: black; }
+    .hearts span:nth-child(3) { left: 40%; animation-delay: 4s; color: #0b5d1e; }
+    .hearts span:nth-child(4) { left: 60%; animation-delay: 1s; color: black; }
+    .hearts span:nth-child(5) { left: 75%; animation-delay: 3s; color: #0b5d1e; }
+    .hearts span:nth-child(6) { left: 90%; animation-delay: 5s; color: black; }
+
+    /* CONTENT WRAPPER */
+    .container {
+      position: relative;
+      z-index: 2;
+      min-height: 100vh;
+      overflow-y: auto;
+      padding: 30px;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      padding: 30px;
     }
 
+    /* LETTER BOX */
     .letter {
       max-width: 700px;
-      background: rgba(255,255,255,0.6);
+      background: rgba(255, 255, 255, 0.75);
       padding: 40px;
       border-radius: 20px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.15);
@@ -38,7 +109,6 @@
     p {
       margin-bottom: 15px;
       line-height: 1.6;
-      animation: appear 1.5s ease forwards;
     }
 
     @keyframes fadeIn {
@@ -46,47 +116,72 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes appear {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    /* MOBILE TWEAKS */
+    @media (max-width: 600px) {
+      .letter {
+        padding: 25px;
+      }
     }
   </style>
 </head>
+
 <body>
 
+  <!-- Background -->
+  <div class="bg"></div>
+  <div class="overlay"></div>
+
+  <!-- Floating Hearts -->
+  <div class="hearts">
+    <span>🖤</span>
+    <span>💚</span>
+    <span>🖤</span>
+    <span>💚</span>
+    <span>🖤</span>
+    <span>💚</span>
+  </div>
+
+  <!-- Background Music -->
   <audio autoplay loop>
-    <source src="assets/music2.mp3" type="audio/mp3">
+    <source src="assets/music2.mp3" type="audio/mpeg">
   </audio>
 
-  <div class="letter">
-    <h2>My love 🖤</h2>
+  <!-- Letter -->
+  <div class="container">
+    <div class="letter">
+      <h2>My love 🖤</h2>
 
-    <p>
-      This is our second New Year together, roshaa 💚🫂
-We made it this far, and I truly believe we’ll be celebrating all our New Years together🥺💗. We’ve fought a lot—yeah, even just now—but I hope every fight becomes a lesson for us to understand each other more, change more, and love more🫂. 
-    </p>
+      <p>
+        This is our second New Year together, roshaa 💚🫂  
+        We made it this far, and I truly believe we’ll be celebrating all our New Years together🥺💗.  
+        We’ve fought a lot—yeah, even just now—but I hope every fight becomes a lesson for us to understand each other more, change more, and love more🫂.
+      </p>
 
-    <p>
-      I’ve always loved you sincerely, and that’s why I’ve always been okay with adapting myself to accept who you are. I’ll continue to do that, no matter what🫂🤞🏻. I’m always okay with taking the initiative to talk first when we fight—until I get tired—but I really want you to take the initiative too, even when I’m the one who stopped talking.😖🤌
-    </p>
+      <p>
+        I’ve always loved you sincerely, and that’s why I’ve always been okay with adapting myself to accept who you are.  
+        I’ll continue to do that, no matter what🫂🤞🏻.  
+        I really want you to take the initiative too, even when I stop talking😖🤌.
+      </p>
 
-    <p>
-      I love you every single day, to the moon and back 😚🫂💗💚🖤
-I’m really, really sorry if I keep hurting you with my words or actions🫠🙇🏻‍♀️. I never mean to hurt you. Sometimes I just can’t control myself, but I do try, and I promise I’ll always be careful with my words🛐. As I’ve already told you, I’m not someone who argues for no reason—I only do when I get triggered. I request you to try and understand what irritates me and what causes it.📝
-    <p>
-      I wish we understand each other better and adapt to each other, because it’s only with us that we can truly be ourselves in a way we can’t be with anyone else.🤌 Let’s always be happy together, love each other, and be loved by each other—no matter what, to any extent🫂💗.
+      <p>
+        I love you every single day, to the moon and back 😚🫂💗💚🖤  
+        I’m really sorry if I hurt you with my words or actions🫠🙇🏻‍♀️.  
+        I promise I’ll always be careful with my words🛐.
+      </p>
 
-    <p>
-      Thank you for loving me, understanding me, and choosing me — every single day🥺🫂. I lovee youuu soooooo muchhh babyyyy😚💗🫂💚🖤
-    </p>
+      <p>
+        Let’s always be happy together, love each other, and choose each other—no matter what🫂💗.
+      </p>
 
-    <p>
-      Here’s to us, to our memories, and to many many New Years still waiting for us 🫂💗
-    </p>
+      <p>
+        Thank you for loving me, understanding me, and choosing me every single day🥺🫂.  
+        I love you sooooo much babyyyy 😚💗🫂💚🖤
+      </p>
 
-    <p style="text-align:center; margin-top:30px;">
-      Always yours 💚🖤
-    </p>
+      <p style="text-align:center; margin-top:30px;">
+        Always yours 💚🖤
+      </p>
+    </div>
   </div>
 
 </body>
