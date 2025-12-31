@@ -181,12 +181,11 @@ button:hover {
 
 <script>
 /* PASSWORD */
-const allowedPasswords = ["roshan@2006", "manisha@2005"];
-
 function checkPassword() {
   const input = document.getElementById("passwordInput").value.trim();
   if (allowedPasswords.includes(input)) {
     document.getElementById("password-screen").style.display = "none";
+    window.location.href = "letter.html"; // go to next page
   } else {
     document.getElementById("errorMsg").style.display = "block";
   }
@@ -214,24 +213,30 @@ setInterval(updateCounter, 1000);
 updateCounter();
 
 /* MUSIC START */
-document.body.addEventListener("click", () => {
-  document.getElementById("bg-music").play();
+const bgMusic = document.getElementById("bg-music");
+
+// mobile: play on first touch
+document.body.addEventListener("touchstart", () => {
+  bgMusic.play();
 }, { once: true });
 
-<!-- Floating Hearts -->
-  <div class="hearts">
-    <span>🖤</span>
-    <span>💚</span>
-    <span>🖤</span>
-    <span>💚</span>
-    <span>🖤</span>
-    <span>💚</span>
-  </div>
-
+// desktop: play on first click
+document.body.addEventListener("click", () => {
+  bgMusic.play();
+}, { once: true });
+  
 function goNext() {
   window.location.href = "letter.html";
 }
 </script>
-
+<!-- Floating Hearts -->
+<div class="hearts">
+  <span>🖤</span>
+  <span>💚</span>
+  <span>🖤</span>
+  <span>💚</span>
+  <span>🖤</span>
+  <span>💚</span>
+</div>
 </body>
 </html>
