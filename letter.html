@@ -22,33 +22,36 @@
     }
 
     /* SCROLLING BACKGROUND */
-.bg-container {
-  position: fixed;
-  inset: 0;
-  z-index: -3;
-  overflow: hidden;
+<!-- CONTINUOUS SCROLLING BACKGROUND (NO GAP) -->
+<div class="bg-container">
+  <img src="assets/bg1.png" alt="">
+  <img src="assets/bg1.png" alt="" class="second">
+</div>
+
+<style>
+.bg-container{
+  position:fixed;
+  inset:0;
+  z-index:-3;
+  overflow:hidden;
 }
 
-.bg-container img {
-  position: absolute;
-  width: 100%;
-  height: auto;
-  left: 0;
-  top: 0;
-  animation: scrollBg 20s linear infinite;
+.bg-container img{
+  position:absolute;
+  width:100%;
+  height:auto;
+  top:0;
+  left:0;
+  animation: scrollBg 25s linear infinite;
 }
 
-.bg-container img.second {
-  top: 100%; /* second copy starts just below the first */
+.bg-container img.second{
+  top:100%;
 }
 
-@keyframes scrollBg {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-100%);
-  }
+@keyframes scrollBg{
+  from{ transform:translateY(0); }
+  to{ transform:translateY(-100%); }
 }
 
     /* HEARTS */
@@ -200,6 +203,5 @@ I’m really, really sorry if I keep hurting you with my words or actions🫠�
   }, { once: true });
 </script>
 
-</body>
 </body>
 </html>
