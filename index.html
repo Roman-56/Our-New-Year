@@ -28,26 +28,36 @@ body {
   background-color: var(--peach);
 }
 
-/* ================= REAL SCROLLING BACKGROUND ================= */
-.scrolling-bg {
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  overflow: hidden;
+<!-- CONTINUOUS SCROLLING BACKGROUND (NO GAP) -->
+<div class="bg-container">
+  <img src="assets/bg1.png" alt="">
+  <img src="assets/bg1.png" alt="" class="second">
+</div>
+
+<style>
+.bg-container{
+  position:fixed;
+  inset:0;
+  z-index:-3;
+  overflow:hidden;
 }
 
-.scrolling-bg img {
-  width: 100%;
-  height: auto;           /* 🔑 no cropping on phone */
-  min-height: 200vh;      /* enough height for scroll */
-  display: block;
-  animation: scrollBG 45s linear infinite;
+.bg-container img{
+  position:absolute;
+  width:100%;
+  height:auto;
+  top:0;
+  left:0;
+  animation: scrollBg 25s linear infinite;
 }
 
-/* vertical scroll animation */
-@keyframes scrollBG {
-  from { transform: translateY(0); }
-  to   { transform: translateY(-50%); }
+.bg-container img.second{
+  top:100%;
+}
+
+@keyframes scrollBg{
+  from{ transform:translateY(0); }
+  to{ transform:translateY(-100%); }
 }
 
 /* Peach overlay */
