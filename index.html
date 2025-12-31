@@ -1,183 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Happy New Year My Babyyy 🖤</title>  
-
-<!-- Google Fonts -->  
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Montserrat&display=swap" rel="stylesheet">  
-
-<style>  
-:root {  
-  --peach: #FDE5D4;  
-  --green: #445D48;  
-  --navy: #001524;  
-  --brown: #5E3023;  
-}  
-
-* { box-sizing: border-box; }  
-
-/* ================= BODY ================= */  
-body {  
-  margin: 0;  
-  font-family: 'Montserrat', sans-serif;  
-  color: var(--navy);  
-  min-height: 100vh;  
-  overflow-x: hidden;  
-  background-color: var(--peach);  
-}  
-
-/* ================= REAL SCROLLING BACKGROUND ================= */  
-.scrolling-bg {  
-  position: fixed;  
-  inset: 0;  
-  z-index: -2;  
-  overflow: hidden;  
-}  
-
-.scrolling-bg img {  
-  width: 100%;  
-  height: auto;  
-  min-height: 200vh;  
-  display: block;  
-  animation: scrollBG 45s linear infinite;  
-}  
-
-@keyframes scrollBG {  
-  from { transform: translateY(0); }  
-  to { transform: translateY(-50%); }  
-}  
-
-.overlay {  
-  position: fixed;  
-  inset: 0;  
-  background: rgba(247, 207, 196, 0.4);  
-  z-index: -1;  
-  pointer-events: none;  
-}  
-
-/* ================= MAIN CONTENT ================= */  
-.container {  
-  min-height: 100vh;  
-  width: 100%;  
-  max-width: 900px;  
-  margin: 0 auto;  
-  padding: 24px;  
-  display: flex;  
-  flex-direction: column;  
-  justify-content: center;  
-  align-items: center;  
-  text-align: center;  
-  position: relative;  
-  z-index: 2;  
-}  
-
-h1 {  
-  font-family: 'Playfair Display', serif;  
-  font-size: 2.6rem;  
-  margin-bottom: 10px;  
-}  
-
-#counter {  
-  font-size: 1.2rem;  
-  margin: 20px 0;  
-  color: var(--brown);  
-}  
-
-/* ================= BUTTON ================= */  
-button {  
-  margin-top: 30px;  
-  padding: 14px 28px;  
-  font-size: 1rem;  
-  border: none;  
-  border-radius: 30px;  
-  background: var(--green);  
-  color: var(--peach);  
-  cursor: pointer;  
-  transition: all 0.3s ease;  
-}  
-
-button:hover {  
-  background: var(--brown);  
-  transform: translateY(-3px);  
-}  
-
-/* ================= FLOATING HEARTS ================= */  
-.hearts span {  
-  position: fixed;  
-  bottom: -20px;  
-  font-size: 20px;  
-  animation: floatUp 8s linear infinite;  
-  opacity: 0.7;  
-  z-index: 3;  
-}  
-
-@keyframes floatUp {  
-  from { transform: translateY(0); opacity: 0.8; }  
-  to { transform: translateY(-110vh); opacity: 0; }  
-}  
-
-.hearts span:nth-child(1) { left:10%; color:#0b5d1e; animation-delay:0s; }  
-.hearts span:nth-child(2) { left:25%; color:black; animation-delay:1s; }  
-.hearts span:nth-child(3) { left:40%; color:#0b5d1e; animation-delay:2s; }  
-.hearts span:nth-child(4) { left:60%; color:black; animation-delay:3s; }  
-.hearts span:nth-child(5) { left:75%; color:#0b5d1e; animation-delay:4s; }  
-.hearts span:nth-child(6) { left:90%; color:black; animation-delay:5s; }  
-
-/* ================= PASSWORD SCREEN ================= */  
-#password-screen {  
-  position: fixed;  
-  inset: 0;  
-  background: rgba(247, 207, 196, 0.95);  
-  display: flex;  
-  flex-direction: column;  
-  justify-content: center;  
-  align-items: center;  
-  z-index: 9999;  
-  padding: 20px;  
-  text-align: center;  
-}  
-
-#password-screen input {  
-  padding: 10px;  
-  font-size: 16px;  
-  margin: 10px;  
-  border: 2px solid #0f5132;  
-  border-radius: 8px;  
-  outline: none;  
-}  
-</style>  
-</head>  
-
-<body>  
-
-<!-- BACKGROUND -->  
-<div class="scrolling-bg">  
-  <img src="assets/bg1.png" alt="background image">  
-</div>  
-<div class="overlay"></div>  
-
-<!-- MUSIC -->  
-<audio id="bg-music" loop>  
-  <source src="assets/music.mp3" type="audio/mpeg">  
-</audio>  
-
-<!-- PASSWORD SCREEN -->  
-<div id="password-screen">  
-  <h2 style="color:#0f5132;">💚🖤 Just us 🖤💚</h2>  
-  <p>Enter the secret (Hint – that’s always been our password!)</p>  
-  <input type="password" id="passwordInput" placeholder="💚🖤">  
-  <button onclick="checkPassword()">Unlock 💚🖤</button>  
-  <p id="errorMsg" style="display:none; margin-top:10px;">❌ Wrong! Don’t tell me you forgot 😭</p>  
-</div>  
-
-<!-- CONTENT UNDERNEATH -->  
-<div class="container">  
-  <h1>Happy New Year, my love 💚🎆</h1>  
-  <div>We’ve been together for 🖤💚</div>  
-  <div id="counter"></div>  
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -297,57 +118,31 @@ button:hover {
 .hearts span:nth-child(4) { left:60%; color:black; animation-delay:3s; }  
 .hearts span:nth-child(5) { left:75%; color:#0b5d1e; animation-delay:4s; }  
 .hearts span:nth-child(6) { left:90%; color:black; animation-delay:5s; }  
-
-#password-screen {  
-  position: fixed;  
-  inset: 0;  
-  background: rgba(247, 207, 196, 0.95);  
-  display: flex;  
-  flex-direction: column;  
-  justify-content: center;  
-  align-items: center;  
-  z-index: 9999;  
-  padding: 20px;  
-  text-align: center;  
-}  
-
-#password-screen input {  
-  padding: 10px;  
-  font-size: 16px;  
-  margin: 10px;  
-  border: 2px solid #0f5132;  
-  border-radius: 8px;  
-  outline: none;  
-}  
 </style>  
 </head>  
 
 <body>  
 
+<!-- Background -->  
 <div class="scrolling-bg">  
   <img src="assets/bg1.png" alt="background image">  
 </div>  
 <div class="overlay"></div>  
 
+<!-- Music -->  
 <audio id="bg-music" loop>  
   <source src="assets/music.mp3" type="audio/mpeg">  
 </audio>  
 
-<div id="password-screen">  
-  <h2 style="color:#0f5132;">💚🖤 Just us 🖤💚</h2>  
-  <p>Enter the secret (Hint – that’s always been our password!)</p>  
-  <input type="password" id="passwordInput" placeholder="💚🖤">  
-  <button id="unlockBtn">Unlock 💚🖤</button>  
-  <p id="errorMsg" style="display:none; margin-top:10px;">❌ Wrong! Don’t tell me you forgot 😭</p>  
-</div>  
+<!-- Main Content -->  
+<div class="container">
+  <h1>Happy New Year, my love 💚🎆</h1>
+  <div>We’ve been together for 🖤💚</div>
+  <div id="counter"></div>
+  <button onclick="goNext()">Click here 💗</button>
+</div>
 
-<div class="container">  
-  <h1>Happy New Year, my love 💚🎆</h1>  
-  <div>We’ve been together for 🖤💚</div>  
-  <div id="counter"></div>  
-  <button onclick="goNext()">Click here 💗</button>  
-</div>  
-
+<!-- Floating hearts -->  
 <div class="hearts">  
   <span>🖤</span>  
   <span>💚</span>  
@@ -358,25 +153,12 @@ button:hover {
 </div>  
 
 <script>
-const allowedPasswords = ["roshan@2006", "manisha@2005"];
 const bgMusic = document.getElementById("bg-music");
-const unlockBtn = document.getElementById("unlockBtn");
 
-unlockBtn.addEventListener("click", () => {
-  const input = document.getElementById("passwordInput").value.trim();
-  const errorMsg = document.getElementById("errorMsg");
-
-  if (allowedPasswords.includes(input)) {
-    // Remove overlay completely
-    const overlay = document.getElementById("password-screen");
-    overlay.parentNode.removeChild(overlay);
-
-    // Play music immediately
-    bgMusic.play();
-  } else {
-    errorMsg.style.display = "block";
-  }
-});
+// Play music on first click/tap anywhere
+document.body.addEventListener("click", () => {
+  bgMusic.play();
+}, { once: true });
 
 /* Counter */
 const startDate = new Date("2024-04-19T01:19:00");
