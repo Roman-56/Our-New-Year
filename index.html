@@ -18,17 +18,29 @@ body {
 }
 
 /* ===== BACKGROUND (SAME AS LETTER) ===== */
-.bg {
+.bg-container {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("assets/your-image.jpg");
-  background-repeat: repeat-y;
-  background-size: 100% auto;
-  background-position: top center;
+  inset: 0;
   z-index: -2;
+  overflow: hidden;
+}
+
+.bg-container img {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  left: 0;
+  top: 0;
+  animation: scrollBg 20s linear infinite;
+}
+
+.bg-container img.second {
+  top: 100%; /* second copy starts just below the first */
+}
+
+@keyframes scrollBg {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-100%); }
 }
 @keyframes bgScroll {
   from { background-position-y: 0; }
@@ -126,7 +138,10 @@ button {
 </head>
 
 <body>
-
+<div class="bg-container">
+  <img src="assets/bg1.png" alt="">
+  <img src="assets/bg1.png" alt="" class="second">
+</div>
 <div class="bg"></div>
 <div class="overlay"></div>
 
