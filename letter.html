@@ -22,20 +22,20 @@
     }
 
     /* BACKGROUND IMAGE */
-    .bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 120%;
-      background-image: url("assets/bg1.png"); /* 🔁 CHANGE IMAGE HERE */
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      animation: moveBg 30s linear infinite;
-      z-index: -3;
-    }
-
+    /* BACKGROUND IMAGE */
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("assets/bg1.png"); /* 🔁 CHANGE IMAGE HERE */
+  background-size: contain;        /* show full image without cropping */
+  background-position: center top; /* align image nicely */
+  background-repeat: no-repeat;
+  animation: moveBg 30s linear infinite;
+  z-index: -3;
+}
     @keyframes moveBg {
       0% { transform: translateY(0); }
       100% { transform: translateY(-10%); }
@@ -181,7 +181,9 @@ I’m really, really sorry if I keep hurting you with my words or actions🫠�
   </div>
 <!-- Your letter and other content above -->
 
-<!-- Background music code starts -->
+<!-- Remove the autoplay <audio> tag at the top -->
+
+<!-- Music: play only on first tap -->
 <audio id="bgMusic" loop>
   <source src="assets/music2.mp3" type="audio/mpeg">
 </audio>
@@ -193,11 +195,10 @@ I’m really, really sorry if I keep hurting you with my words or actions🫠�
   const music = document.getElementById("bgMusic");
 
   overlay.addEventListener("click", () => {
-    music.play();
+    music.play().catch(e => console.log("Playback failed:", e));
     overlay.style.display = "none"; // hide overlay after first tap
   }, { once: true });
 </script>
-<!-- Background music code ends -->
 
 </body>
 </body>
