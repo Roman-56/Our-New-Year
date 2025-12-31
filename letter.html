@@ -9,50 +9,41 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Montserrat&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
       color: #001524;
       min-height: 100vh;
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
-    /* SCROLLING BACKGROUND */
-<!-- CONTINUOUS SCROLLING BACKGROUND (NO GAP) -->
-<div class="bg-container">
-  <img src="assets/bg1.png" alt="">
-  <img src="assets/bg1.png" alt="" class="second">
-</div>
+    /* ===== CONTINUOUS SCROLLING BACKGROUND ===== */
+    .bg-container {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      z-index: -3;
+    }
 
-<style>
-.bg-container{
-  position:fixed;
-  inset:0;
-  z-index:-3;
-  overflow:hidden;
-}
+    .bg-container img {
+      position: absolute;
+      width: 100%;
+      height: auto;
+      left: 0;
+      top: 0;
+      animation: scrollBg 30s linear infinite;
+    }
 
-.bg-container img{
-  position:absolute;
-  width:100%;
-  height:auto;
-  top:0;
-  left:0;
-  animation: scrollBg 25s linear infinite;
-}
+    .bg-container img.second {
+      top: 100%;
+    }
 
-.bg-container img.second{
-  top:100%;
-}
-
-@keyframes scrollBg{
-  from{ transform:translateY(0); }
-  to{ transform:translateY(-100%); }
-}
+    @keyframes scrollBg {
+      from { transform: translateY(0); }
+      to   { transform: translateY(-100%); }
+    }
 
     /* HEARTS */
     .hearts span {
@@ -65,15 +56,9 @@
     }
 
     @keyframes floatUp {
-      0% {
-        transform: translateY(0) scale(1);
-        opacity: 0;
-      }
+      0% { transform: translateY(0) scale(1); opacity: 0; }
       20% { opacity: 1; }
-      100% {
-        transform: translateY(-120vh) scale(1.4);
-        opacity: 0;
-      }
+      100% { transform: translateY(-120vh) scale(1.4); opacity: 0; }
     }
 
     .hearts span:nth-child(1) { left: 10%; animation-delay: 0s; color: #0b5d1e; }
@@ -83,7 +68,7 @@
     .hearts span:nth-child(5) { left: 75%; animation-delay: 3s; color: #0b5d1e; }
     .hearts span:nth-child(6) { left: 90%; animation-delay: 5s; color: black; }
 
-    /* CONTENT WRAPPER */
+    /* CONTENT */
     .container {
       position: relative;
       z-index: 2;
@@ -95,7 +80,6 @@
       align-items: center;
     }
 
-    /* LETTER BOX */
     .letter {
       max-width: 700px;
       background: rgba(255, 255, 255, 0.75);
@@ -121,42 +105,45 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* MOBILE TWEAKS */
     @media (max-width: 600px) {
-      .letter {
-        padding: 25px;
-      }
+      .letter { padding: 25px; }
+    }
+
+    /* MUSIC TAP */
+    #tapLayer {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
     }
   </style>
 </head>
 
 <body>
+
+<!-- BACKGROUND -->
 <div class="bg-container">
   <img src="assets/bg1.png" alt="">
-  <img src="assets/bg1.png" alt="">
+  <img src="assets/bg1.png" class="second" alt="">
 </div>
-  <!-- Background -->
-  <div class="bg"></div>
-  <div class="overlay"></div>
 
-  <!-- Floating Hearts -->
-  <div class="hearts">
-    <span>🖤</span>
-    <span>💚</span>
-    <span>🖤</span>
-    <span>💚</span>
-    <span>🖤</span>
-    <span>💚</span>
-  </div>
+<!-- FLOATING HEARTS -->
+<div class="hearts">
+  <span>🖤</span>
+  <span>💚</span>
+  <span>🖤</span>
+  <span>💚</span>
+  <span>🖤</span>
+  <span>💚</span>
+</div>
 
-  <!-- Letter -->
-  <div class="container">
-    <div class="letter">
+<!-- LETTER (UNCHANGED CONTENT) -->
+<div class="container">
+  <div class="letter">
     <h2>My love 🖤</h2>
 
     <p>
       This is our second New Year together, roshaa 💚🫂
-We made it this far, and I truly believe we’ll be celebrating all our New Years together🥺💗. We’ve fought a lot—yeah, even just now—but I hope every fight becomes a lesson for us to understand each other more, change more, and love more🫂. 
+      We made it this far, and I truly believe we’ll be celebrating all our New Years together🥺💗. We’ve fought a lot—yeah, even just now—but I hope every fight becomes a lesson for us to understand each other more, change more, and love more🫂. 
     </p>
 
     <p>
@@ -165,42 +152,45 @@ We made it this far, and I truly believe we’ll be celebrating all our New Year
 
     <p>
       I love you every single day, to the moon and back 😚🫂💗💚🖤
-I’m really, really sorry if I keep hurting you with my words or actions🫠🙇🏻‍♀️. I never mean to hurt you. Sometimes I just can’t control myself, but I do try, and I promise I’ll always be careful with my words🛐. As I’ve already told you, I’m not someone who argues for no reason—I only do when I get triggered. I request you to try and understand what irritates me and what causes it.📝
+      I’m really, really sorry if I keep hurting you with my words or actions🫠🙇🏻‍♀️. I never mean to hurt you. Sometimes I just can’t control myself, but I do try, and I promise I’ll always be careful with my words🛐. As I’ve already told you, I’m not someone who argues for no reason—I only do when I get triggered. I request you to try and understand what irritates me and what causes it.📝
+    </p>
+
     <p>
       I wish we understand each other better and adapt to each other, because it’s only with us that we can truly be ourselves in a way we can’t be with anyone else.🤌 Let’s always be happy together, love each other, and be loved by each other—no matter what, to any extent🫂💗.
+    </p>
 
     <p>
       Thank you for loving me, understanding me, and choosing me — every single day🥺🫂. I lovee youuu soooooo muchhh babyyyy😚💗🫂💚🖤
     </p>
 
     <p>
-       I'm not sure if I'm in the place to send you this right now, but whatever the consequences we're facing right now can never be the reason for me to stop loving you, you can hate me all you want or love me too that's totally upto you. Also here I'm showering all my love only to you and will forever💚. Here’s to us, to our memories, and to many many New Years still waiting for us to celebrate together forever🫂�
+      I'm not sure if I'm in the place to send you this right now, but whatever the consequences we're facing right now can never be the reason for me to stop loving you, you can hate me all you want or love me too that's totally upto you. Also here I'm showering all my love only to you and will forever💚. Here’s to us, to our memories, and to many many New Years still waiting for us to celebrate together forever🫂�
     </p>
 
     <p style="text-align:center; margin-top:30px;">
       Always yours, and YOU are MINE!💚🖤
     </p>
-    </div>
   </div>
-<!-- Your letter and other content above -->
+</div>
 
-<!-- Remove the autoplay <audio> tag at the top -->
-
-<!-- Music: play only on first tap -->
+<!-- MUSIC -->
 <audio id="bgMusic" loop>
   <source src="assets/Engagement-Ring.mp3" type="audio/mpeg">
 </audio>
 
-<div id="tapOverlay" style="position:fixed; inset:0; background:transparent; z-index:10; cursor:pointer;"></div>
+<div id="tapLayer"></div>
 
 <script>
-  const overlay = document.getElementById("tapOverlay");
   const music = document.getElementById("bgMusic");
+  const tapLayer = document.getElementById("tapLayer");
 
-  overlay.addEventListener("click", () => {
-    music.play().catch(e => console.log("Playback failed:", e));
-    overlay.style.display = "none"; // hide overlay after first tap
-  }, { once: true });
+  function startMusic() {
+    music.play().catch(() => {});
+    tapLayer.remove();
+  }
+
+  tapLayer.addEventListener("click", startMusic, { once: true });
+  tapLayer.addEventListener("touchstart", startMusic, { once: true });
 </script>
 
 </body>
