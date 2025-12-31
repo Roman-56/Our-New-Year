@@ -21,31 +21,35 @@
       overflow: hidden;
     }
 
-    /* BACKGROUND IMAGE */
-    .bg {
+    /* SCROLLING BACKGROUND */
+.bg-container {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;          /* full viewport height */
-  background-image: url("assets/bg1.png");
-  background-size: cover;  /* fills screen, may crop slightly */
-  background-position: center;
-  background-repeat: repeat;
+  inset: 0;
   z-index: -3;
-    }
-    @keyframes moveBg {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-10%); }
-    }
+  overflow: hidden;
+}
 
-    /* DARK OVERLAY */
-    .overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.25);
-      z-index: -2;
-    }
+.bg-container img {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  left: 0;
+  top: 0;
+  animation: scrollBg 20s linear infinite;
+}
+
+.bg-container img.second {
+  top: 100%; /* second copy starts just below the first */
+}
+
+@keyframes scrollBg {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
 
     /* HEARTS */
     .hearts span {
