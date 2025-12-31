@@ -151,14 +151,32 @@ button {
   <span>💚</span><span>🖤</span><span>💚</span>
 </div>
 
-<!-- MUSIC -->
-<audio id="music" loop>
+<audio id="bgMusic" loop preload="auto">
   <source src="assets/Engagement-Ring.mp3" type="audio/mpeg">
 </audio>
 
-<div id="tap"></div>
+<div id="tapOverlay"
+     style="position:fixed; inset:0; z-index:9999; cursor:pointer;">
+</div>
 
 <script>
+  const music = document.getElementById("bgMusic");
+  const overlay = document.getElementById("tapOverlay");
+
+  function startMusic() {
+    music.volume = 0.8;
+    music.play().then(() => {
+      overlay.remove();
+      document.removeEventListener("click", startMusic);
+      document.removeEventListener("touchstart", startMusic);
+    }).catch(err => {
+      console.log("Audio blocked:", err);
+    });
+  }
+
+  document.addEventListener("click", startMusic);
+  document.addEventListener("touchstart", startMusic);
+
 /* PASSWORD */
 const allowed = ["roshan@2006", "manisha@2005"];
 function checkPassword() {
@@ -183,18 +201,6 @@ function updateCounter(){
 }
 setInterval(updateCounter,1000);
 updateCounter();
-
-/* MUSIC ON FIRST TAP */
-const music = document.getElementById("music");
-const tap = document.getElementById("tap");
-
-function startMusic(){
-  music.play().catch(()=>{});
-  tap.remove();
-}
-
-tap.addEventListener("click", startMusic, {once:true});
-tap.addEventListener("touchstart", startMusic, {once:true});
 
 /* NEXT */
 function goNext(){
