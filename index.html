@@ -192,17 +192,17 @@ button:hover {
 
 <script>
 /* PASSWORD */  
-const allowedPasswords = ["roshan@2006", "manisha@2005"];  
-
-function checkPassword() {  
-  const input = document.getElementById("passwordInput").value.trim();  
-  if (allowedPasswords.includes(input)) {  
-    document.getElementById("password-screen").style.display = "none"; // hide overlay
-    document.getElementById("bg-music").play(); // play music immediately
-  } else {  
-    document.getElementById("errorMsg").style.display = "block";  
-  }  
-}  
+function checkPassword() {
+  const input = document.getElementById("passwordInput").value.trim();
+  if (allowedPasswords.includes(input)) {
+    const overlay = document.getElementById("password-screen");
+    overlay.parentNode.removeChild(overlay); // remove overlay completely
+    const bgMusic = document.getElementById("bg-music");
+    bgMusic.play(); // play music immediately
+  } else {
+    document.getElementById("errorMsg").style.display = "block";
+  }
+}
 
 /* COUNTER */  
 const startDate = new Date("2024-04-19T01:19:00");  
