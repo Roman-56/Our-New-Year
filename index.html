@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Happy New Year My Babyyy ❤️</title>
+<title>Happy New Year My Babyyy 🖤</title>
 
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Montserrat&display=swap" rel="stylesheet">
@@ -176,7 +176,7 @@ button:hover {
   <h1>Happy New Year, my love 💚🎆</h1>
   <div>We’ve been together for 🖤💚</div>
   <div id="counter"></div>
-  <button onclick="goNext()">Click here ❤️</button>
+  <button onclick="goNext()">Click here 💗</button>
 </div>
 
 <script>
@@ -218,15 +218,15 @@ document.body.addEventListener("click", () => {
   document.getElementById("bg-music").play();
 }, { once: true });
 
-/* FLOATING HEARTS */
-setInterval(() => {
-  const heart = document.createElement("div");
-  heart.className = "heart";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.innerText = "💖";
-  document.body.appendChild(heart);
-  setTimeout(() => heart.remove(), 8000);
-}, 900);
+<!-- Floating Hearts -->
+  <div class="hearts">
+    <span>🖤</span>
+    <span>💚</span>
+    <span>🖤</span>
+    <span>💚</span>
+    <span>🖤</span>
+    <span>💚</span>
+  </div>
 
 function goNext() {
   window.location.href = "letter.html";
